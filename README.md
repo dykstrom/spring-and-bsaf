@@ -16,22 +16,29 @@ The solution is to introduce a @Configuration class with a method that creates
 a Spring bean from the BSAF application instance. In the Application subclass,
 you let BSAF create the application:
 
-    public static void main(String[] args) {
-        // Create the singleton application instance using BSAF here
-        launch(BsafApplication.class, args);
-    }
-
+```java
+public static void main(String[] args) {
+    // Create the singleton application instance using BSAF here
+    launch(BsafApplication.class, args);
+}
+```
+    
 In the @Configuration class, you create a bean that just returns the singleton
 instance:
 
-    @Bean
-    public BsafApplication application() {
-        // Return the singleton application instance as a Spring bean here
-        return (BsafApplication) Application.getInstance();
-    }
+```java
+@Bean
+public BsafApplication application() {
+    // Return the singleton application instance as a Spring bean here
+    return (BsafApplication) Application.getInstance();
+}
+```
 
 This enables the application instance to be injected into other classes, even 
 though it was created before the application context was loaded. You just have 
 to be careful to not access the application bean before the application instance
 has been created by calling launch. Otherwise, BSAF will create a dummy instance
 that is not compatible with your real Application subclass.
+
+For a Kotlin version of this project, please see
+[spring-and-bsaf-kotlin](https://github.com/dykstrom/spring-and-bsaf-kotlin).

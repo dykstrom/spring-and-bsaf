@@ -42,7 +42,7 @@ public class BsafFrameView extends FrameView {
     }
 
     private void init() {
-        ActionMap actions = application.getContext().getActionMap(BsafFrameView.class, this);
+        ActionMap actions = application.getContext().getActionMap(this);
 
         JButton button = new JButton();
         button.setName("button");
