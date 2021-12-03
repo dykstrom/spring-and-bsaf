@@ -1,14 +1,14 @@
 # spring-and-bsaf
 
 This small application demonstrates how to make the 
-[Spring Framework](https://projects.spring.io/spring-framework) and the
+[Spring Framework](https://spring.io/projects/spring-framework) and the
 [Better Swing Application Framework (BSAF)](https://sourceforge.net/projects/bsaf)
 work together. We leave the question of _why_ you would like to do that
 to another time. ;-)
 
 The problem with combining the two frameworks is that they both want to create
 the singleton instance of the main application class. BSAF requires you to
-create and run your Application subclass by calling the static launch method. 
+create and run your Application subclass by calling the static _launch_ method. 
 Spring of course wants to create all managed beans as part of the application
 context.
 
@@ -37,7 +37,7 @@ public BsafApplication application() {
 This enables the application instance to be injected into other classes, even 
 though it was created before the application context was loaded. You just have 
 to be careful to not access the application bean before the application instance
-has been created by calling launch. Otherwise, BSAF will create a dummy instance
+has been created by calling _launch_. Otherwise, BSAF will create a dummy instance
 that is not compatible with your real Application subclass.
 
 For a Kotlin version of this project, please see

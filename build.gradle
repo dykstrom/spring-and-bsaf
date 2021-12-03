@@ -1,10 +1,32 @@
-group 'se.dykstrom.spring'
-version '0.1.0-SNAPSHOT'
+plugins {
+    id 'java-library'
+    id 'application'
+}
 
-apply plugin: 'application'
-apply plugin: 'java'
+group = 'se.dykstrom.spring'
+version = '0.1.0-SNAPSHOT'
 
-sourceCompatibility = 11
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    mainClass = 'se.dykstrom.spring.BsafApplication'
+}
+
+run {
+    applicationDefaultJvmArgs = [
+            '--add-opens=java.base/java.lang=ALL-UNNAMED',
+            '--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED'
+    ]
+
+    jvmArgs = [
+            '--add-opens=java.base/java.lang=ALL-UNNAMED',
+            '--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED'
+    ]
+}
 
 repositories {
     mavenCentral()
@@ -12,9 +34,7 @@ repositories {
 
 dependencies {
     implementation group: 'javax.inject', name: 'javax.inject', version: '1'
-    implementation group: 'org.springframework', name: 'spring-beans', version: '4.3.9.RELEASE'
-    implementation group: 'org.springframework', name: 'spring-context', version: '4.3.9.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.13'
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.13'
     implementation group: 'org.jdesktop.bsaf', name: 'bsaf', version: '1.9.2'
 }
-
-mainClassName = 'se.dykstrom.spring.BsafApplication'
