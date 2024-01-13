@@ -21,7 +21,7 @@ import org.jdesktop.application.SingleFrameApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-class BsafApplication extends SingleFrameApplication {
+public class BsafApplication extends SingleFrameApplication {
 
     @Override
     protected void startup() {
